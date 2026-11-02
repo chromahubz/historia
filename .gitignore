@@ -1,0 +1,6 @@
+# downloaded and generated media (rebuilt by each film's build.sh)
+films/*/assets/raw/
+films/*/assets/tex/
+films/*/fonts/*.woff2
+films/*/voice/out/*.wav
+films/*/out/

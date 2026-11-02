@@ -1,0 +1,19 @@
+No. 7 · The Roman Dodecahedron — credits
+
+Style: Archive Light Table, from Lemo-Opuscar by Lemomo (https://github.com/lemomo-ai/lemo-opuscar), MIT / CC BY 4.0.
+Picture, score and mix made in code; no generated imagery, no stock footage.
+
+Objects and documents
+- Roman dodecahedron, Tongeren (Leopoldwal, 1939), Gallo-Roman Museum Tongeren inv. 4002. Photo: Gallo-Roman Museum Tongeren, via Wikimedia Commons, CC0 1.0.
+- Roman dodecahedron, Much Hadham, Hertfordshire (2018), Portable Antiquities Scheme 941889: record summary (find spot, date, 82 mm, 247 g, holes 13.7–20 mm) as given on its Wikimedia Commons file page, typeset on a card.
+- Not yet shown (Wikimedia rate-limited this build): Hunt Museum HCM 157 photo (Eamonn O'Mahony, CC0) and the Much Hadham photo (PAS, CC BY 2.0). tools/fetch.sh fetches them when available.
+- Hunt Museum catalogue description of HCM 157, via Europeana (record 325/HCM157, metadata CC0), transcribed.
+- Vitruvius, De architectura (Como, 1521), Library of Congress NA2515 .V8 1521, public domain.
+- Vegetius, De re militari (1475), Library of Congress Incun. X .V37, public domain.
+- Apicius, De re coquinaria (1498), Library of Congress Incun. 1498 .A6, public domain.
+- Sestertii of Trajan (08.170.121) and Titus (08.170.117), Rogers Fund, 1908; sestertius of Trebonianus Gallus (05.47), Gift of William M. Laffan, 1905. The Metropolitan Museum of Art, Open Access (CC0).
+
+Voice: Kokoro TTS (am_michael), Apache 2.0.
+Music samples: "Salamander Grand Piano V3" by Alexander Holm, CC BY 3.0; FreePats project, VS Chamber Orchestra: Community Edition and Versilian Community Sample Library (Versilian Studios), CC0.
+Fonts: IBM Plex Sans, IBM Plex Mono, IBM Plex Serif, SIL Open Font License 1.1.
+Facts and sources: FACTS.md.

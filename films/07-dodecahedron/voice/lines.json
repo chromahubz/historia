@@ -1,0 +1,91 @@
+[
+ {
+  "id": "L01",
+  "text": "Number seven. The Roman dodecahedron.",
+  "voice": "am_michael",
+  "speed": 0.94,
+  "asr": "7. The Roman Dodecahedron"
+ },
+ {
+  "id": "L02",
+  "text": "The Romans wrote about almost everything. How to build. How to run an army. Even what to eat.",
+  "voice": "am_michael",
+  "speed": 0.95
+ },
+ {
+  "id": "L03",
+  "text": "But they never once mentioned these.",
+  "voice": "am_michael",
+  "speed": 0.92
+ },
+ {
+  "id": "L04",
+  "text": "Across the old northern provinces of the empire, archaeologists have found about a hundred and thirty of them. Hollow, cast in bronze.",
+  "voice": "am_michael",
+  "speed": 0.95
+ },
+ {
+  "id": "L05",
+  "text": "Twelve flat faces, each one a pentagon. A knob on every corner. And a hole in every face.",
+  "voice": "am_michael",
+  "speed": 0.94
+ },
+ {
+  "id": "L06",
+  "text": "But the holes are not the same size.",
+  "voice": "am_michael",
+  "speed": 0.92
+ },
+ {
+  "id": "L07",
+  "text": "One found in Hertfordshire, England, in twenty eighteen is eighty-two millimetres across. Its holes range from under fourteen millimetres to twenty.",
+  "voice": "am_michael",
+  "speed": 0.95,
+  "asr": "One found in Hertfordshire, England, in 2018 is 82 millimeters across. Its holes range from under 14 millimeters to 20."
+ },
+ {
+  "id": "L08",
+  "text": "The smallest are about four centimetres, the size of a golf ball. The largest, eleven. Nearly a grapefruit.",
+  "voice": "am_michael",
+  "speed": 0.95,
+  "asr": "The smallest are about 4 centimeters, the size of a golf ball. The largest, 11, nearly a grapefruit."
+ },
+ {
+  "id": "L09",
+  "text": "And yet, no Roman text describes them. No painting shows one. No carving depicts one.",
+  "voice": "am_michael",
+  "speed": 0.94
+ },
+ {
+  "id": "L10",
+  "text": "Historians have thrown every theory at them. Candle holders. Surveying tools. Dice. Even a gadget for knitting gloves.",
+  "voice": "am_michael",
+  "speed": 0.95
+ },
+ {
+  "id": "L11",
+  "text": "Every theory has a problem. A measuring tool should be standard, but no two of these are made the same.",
+  "voice": "am_michael",
+  "speed": 0.95
+ },
+ {
+  "id": "L12",
+  "text": "The Hunt Museum in Ireland holds another one. Its catalogue says it plainly: there is no mention of them in classical sources, and their purpose remains unclear.",
+  "voice": "am_michael",
+  "speed": 0.95,
+  "asr": "The Hunt Museum in Ireland holds another one. Its catalog says it plainly. There is no mention of them in classical sources, and their purpose remains unclear."
+ },
+ {
+  "id": "L13",
+  "text": "And several were found buried in hoards of coins. You don't bury a candle holder with your life savings.",
+  "voice": "am_michael",
+  "speed": 0.95,
+  "asr": "and several were found buried in hordes of coins. You don't bury a candle holder with your life savings."
+ },
+ {
+  "id": "L14",
+  "text": "Whoever owned these thought they mattered. And then they vanished from history, leaving us nothing but the objects themselves.",
+  "voice": "am_michael",
+  "speed": 0.94
+ }
+]
