@@ -102,12 +102,15 @@ def coin(v=1.0, f0=2800):
     return norm(x + bp(noise(d), 3000, 9000) * env_exp(d, .004) * .6) * v
 
 for t0, v in [(0.0, .5), (0.12, .35), (0.2, .3), (0.32, .4), (0.42, .3)]: add(foley, starter(v), t0, .5, .35)
-for k in ('drop1', 'drop2', 'drop3'): add(foley, glass_tap(1.0), H[k] - 0.02, .62, .1); add(foley, whoosh(.9, .6), H[k] + .6, .3, 0)
-for k in ('lift1', 'lift2', 'lift3'): add(foley, glass_tap(.5, 1.2), H[k], .25, .1); add(foley, whoosh(.5, .6), H[k] - .8, .25, -.2)
+# a soft air move on each cut between worlds; the case glass on the museum shots; paper on the desk shots
+CUTS, SHOTS = TL['cuts'], TL['shots']
+for c, sh in zip(CUTS[1:-1], SHOTS[1:]):
+    add(foley, whoosh(.5, .55), c - .25, .22, -.15)
+    if sh in ('case', 'end'): add(foley, glass_tap(.5, 1.1), c + .4, .2, .1)
+    if sh == 'card': add(foley, paper(.7, .7), c + .1, .2, .2)
 for k in ('build', 'army', 'eat', 'mention'): add(foley, paper(1.0, .8), H[k] - 0.2, .22, .25)
-for k in ('these', 'drop2', 'golf', 'noText', 'candle', 'drop3', 'hoards'): add(foley, paper(.7, .6), H[k] - .9, .16, -.3)
+for k in ('faces', 'knob', 'hole', 'notSame', 'mm82', 'range'): add(foley, tick(.7), H[k], .18, .2)
 for i in range(4): add(foley, pen(.28, .9), H['problem'] + i * .45, .3, -.2)
-add(foley, glass_tap(.7, 1.4), H['mm82'], .28, .2)
 for i, f in enumerate((2900, 3300, 2600)): add(foley, coin(.8, f), H['hoards'] + .1 + i * .13, .22, .3 * (i - 1))
 for i in range(8): add(foley, tick(.6), H['index'] + 0.2 + i * 0.12, .2, .3)
 

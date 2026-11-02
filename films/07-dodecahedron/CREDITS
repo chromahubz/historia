@@ -1,19 +1,36 @@
 No. 7 · The Roman Dodecahedron — credits
 
-Style: Archive Light Table, from Lemo-Opuscar by Lemomo (https://github.com/lemomo-ai/lemo-opuscar), MIT / CC BY 4.0.
-Picture, score and mix made in code; no generated imagery, no stock footage.
+Made in code, in three worlds: Archive Room, Orbit and Studio 3D (after styles from Lemo-Opuscar by Lemomo,
+https://github.com/lemomo-ai/lemo-opuscar, MIT / CC BY 4.0). No generated imagery, no stock footage.
 
-Objects and documents
-- Roman dodecahedron, Tongeren (Leopoldwal, 1939), Gallo-Roman Museum Tongeren inv. 4002. Photo: Gallo-Roman Museum Tongeren, via Wikimedia Commons, CC0 1.0.
-- Roman dodecahedron, Much Hadham, Hertfordshire (2018), Portable Antiquities Scheme 941889: record summary (find spot, date, 82 mm, 247 g, holes 13.7–20 mm) as given on its Wikimedia Commons file page, typeset on a card.
-- Not yet shown (Wikimedia rate-limited this build): Hunt Museum HCM 157 photo (Eamonn O'Mahony, CC0) and the Much Hadham photo (PAS, CC BY 2.0). tools/fetch.sh fetches them when available.
-- Hunt Museum catalogue description of HCM 157, via Europeana (record 325/HCM157, metadata CC0), transcribed.
-- Vitruvius, De architectura (Como, 1521), Library of Congress NA2515 .V8 1521, public domain.
+Objects and documents (Archive Room)
+- Roman dodecahedron, Tongeren (Leopoldwal, 1939), Gallo-Roman Museum Tongeren inv. 4002. Photo: Gallo-Roman Museum Tongeren, via Wikimedia Commons, CC0 1.0. (The white backdrop seen through its holes is made transparent.)
+- Vitruvius, De architectura (Como, 1521), table of chapters; Library of Congress NA2515 .V8 1521, public domain.
 - Vegetius, De re militari (1475), Library of Congress Incun. X .V37, public domain.
 - Apicius, De re coquinaria (1498), Library of Congress Incun. 1498 .A6, public domain.
+- Wall painting from Room L of the Villa of P. Fannius Synistor at Boscoreale, c. 50–40 BC. The Metropolitan Museum of Art 03.14.4, Rogers Fund, 1903, Open Access (CC0).
+- Marble relief fragment depicting athletic prizes, 2nd c. AD. The Metropolitan Museum of Art 59.11.19, Rogers Fund, 1959, Open Access (CC0).
 - Sestertii of Trajan (08.170.121) and Titus (08.170.117), Rogers Fund, 1908; sestertius of Trebonianus Gallus (05.47), Gift of William M. Laffan, 1905. The Metropolitan Museum of Art, Open Access (CC0).
+- Hunt Museum catalogue description of HCM 157, via Europeana (record 325/HCM157, metadata CC0), transcribed onto a card.
+- Much Hadham find, Portable Antiquities Scheme 941889: figures from its record as quoted on Wikimedia Commons.
 
-Voice: Kokoro TTS (am_michael), Apache 2.0.
-Music samples: "Salamander Grand Piano V3" by Alexander Holm, CC BY 3.0; FreePats project, VS Chamber Orchestra: Community Edition and Versilian Community Sample Library (Versilian Studios), CC0.
-Fonts: IBM Plex Sans, IBM Plex Mono, IBM Plex Serif, SIL Open Font License 1.1.
+Places (Orbit)
+- NASA Blue Marble (shaded relief and bathymetry), via NASA GIBS, public domain.
+- Sentinel-2 cloudless 2016 by EOX IT Services GmbH (https://s2maps.eu), CC BY 4.0; contains modified Copernicus Sentinel data 2016.
+- Country outlines: Natural Earth 1:50m, public domain.
+
+Studio 3D
+- The dodecahedra, golf ball, rule, candle and yarn are 3D reconstructions built in code (three.js); the main model uses the
+  recorded size and hole range of the Much Hadham find (82 mm, holes 13.7–20 mm). Marked "3D RECONSTRUCTION" on screen.
+
+Surfaces, lights, props
+- Poly Haven (CC0): wood_table_worn, velour_velvet, red_plaster_weathered, farm_soil textures; desk_lamp_arm_01 model;
+  photo_studio_loft_hall and lythwood_lounge HDRIs.
+
+Sound and type
+- Voice: Kokoro TTS (am_michael), Apache 2.0.
+- Music samples: "Salamander Grand Piano V3" by Alexander Holm, CC BY 3.0; FreePats project, VS Chamber Orchestra:
+  Community Edition and Versilian Community Sample Library (Versilian Studios), CC0.
+- Fonts: IBM Plex Sans, IBM Plex Mono, IBM Plex Serif, SIL Open Font License 1.1.
+
 Facts and sources: FACTS.md.

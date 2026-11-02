@@ -1,7 +1,7 @@
 #!/bin/sh
-# No. 7 · The Roman Dodecahedron (Archive Light Table). One command, from anywhere:
+# No. 7 · The Roman Dodecahedron (Archive Room · Orbit · Studio 3D). One command, from anywhere:
 #   LIB=<lemo-opuscar library> sh films/07-dodecahedron/build.sh
-# Needs the library's deps + voice tier, ffmpeg 7+ on PATH, and the sample libraries salamander, vsco2ce, vcsl, freepats.
+# Needs the library's deps + voice tier, its HDRIs (tools/fetch.sh hdri), ffmpeg 7+ on PATH, and the sample libraries salamander, vsco2ce, vcsl, freepats.
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
 [ -n "$LIB" ] && [ -f "$LIB/core/render/video.mjs" ] || { echo "set LIB to the lemo-opuscar library folder"; exit 1; }
@@ -16,11 +16,12 @@ sh "$HERE/tools/fetch.sh" "$HERE"
 "$PY" "$LIB/core/tts/tts.py" "$HERE/voice/lines.json" "$HERE/voice/out"
 WHISPER_MODEL=small.en "$PY" "$LIB/core/tts/asr_check.py" "$HERE/voice/lines.json" "$HERE/voice/out" --lang en
 node "$HERE/tools/export.mjs" "$HERE"
-# picture, score + mix, master, subtitles
+# layout (texts inside plates, no overlaps), picture, score + mix, master, subtitles
 cd "$LIB"
+node "$HERE/shared/layoutcheck.mjs" "$HERE" --step 0.2
 node core/render/video.mjs "$HERE" --fps 24 --workers 4 --out "$HERE/out/video.mp4"
 "$PY" "$HERE/mix.py"
-sh core/render/mux.sh "$HERE/out/video.mp4" "$HERE/out/mix.wav" "$HERE/out/$NAME.mp4" 24 1
+sh core/render/mux.sh "$HERE/out/video.mp4" "$HERE/out/mix.wav" "$HERE/out/$NAME.mp4" 24 2
 "$PY" core/render/srt.py "$HERE/out/cues_srt.json" "$HERE/out/$NAME.srt"
 node core/render/readcheck.mjs "$HERE" > "$HERE/out/readcheck.txt" && echo "readcheck ok"
 echo "done: $HERE/out/$NAME.mp4"

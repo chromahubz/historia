@@ -92,3 +92,7 @@ export const CUES = SUBS.map((s, i) => {
   }
   return { line: s.line, en: s.en, t0 };
 }).map((c, i, a) => ({ ...c, t1: a[i + 1] && a[i + 1].line === c.line ? a[i + 1].t0 - 0.04 : V[c.line].t1 + 0.6 }));
+
+// the cuts between worlds (shot starts), shared by film.js (picture) and mix.py (a soft whoosh on each cut)
+export const CUTS = [0, V.L03.t0 - 0.25, V.L04.t0 - 0.2, V.L05.t0 - 0.35, V.L07.t0 - 0.2, HIT.mm82 - 0.6, V.L08.t0 - 0.2, V.L09.t0 - 0.25, V.L10.t0 - 0.2, V.L12.t0 - 0.2, W('L12', 'Its') - 0.15, V.L13.t0 - 0.25, V.L14.t0 - 0.2, DUR];
+export const SHOTS = ['desk', 'case', 'europe', 'features', 'hadham', 'measure', 'sizes', 'gallery', 'theories', 'limerick', 'card', 'soil', 'end'];

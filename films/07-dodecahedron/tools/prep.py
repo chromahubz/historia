@@ -52,7 +52,7 @@ def cutout(id_, src, size_mm, axis='w', thr=None, maxdim=2400, holes=True, chrom
 
 
 # --- papers (Library of Congress, public domain); heights from the LoC records (leaf height)
-paper('vitruvius', 'loc_vitruvius1521.jpg', (70, 0, 2270, 3284), 410)     # NA2515 .V8 1521, 41 cm (fol.)
+paper('vitruvius', 'loc_vitruvius1521.jpg', (0, 0, 2140, 3230), 410)      # NA2515 .V8 1521, 41 cm (fol.); the table of chapters
 paper('vegetius', 'loc_vegetius1475.jpg', (45, 120, 1740, 2690), 290)      # Incun. X .V37, 29 cm
 paper('apicius', 'loc_apicius1498.jpg', (40, 0, 1690, 2593), 197)         # Incun. 1498 .A6, 19.7 cm
 # --- coins (The Met, Open Access / public domain); diameters from the Met records
@@ -69,3 +69,52 @@ for id_, src, mm, ax in OPT:
         if mm is None: items[id_]['size_unknown'] = True
 json.dump(items, open(os.path.join(TEX, 'items.json'), 'w'), indent=1)
 print('items:', ', '.join(items))
+
+# ---------------- v2: the three worlds (Archive Room, Orbit, Studio 3D) ----------------
+def resized(src, out, maxdim, q=88):
+    p = os.path.join(RAW, src)
+    if not os.path.exists(p): return
+    im = Image.open(p).convert('RGB'); s = min(1, maxdim / max(im.size))
+    im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS); im.save(os.path.join(TEX, out), quality=q)
+    return im.size
+# Met paintings and reliefs (Open Access, CC0); the relief is cut out of its studio grey
+items['fresco'] = dict(file='fresco.jpg', size=resized('met_247008.jpg', 'fresco.jpg', 3000), w_mm=2718, h_mm=1956)
+cutout('relief', 'met_255013.jpg', 677, thr=0.08)                          # 59.11.19, L. 67.7 cm
+# satellite plates (EPSG:4326 boxes: lon0, lat0, lon1, lat1) and surface textures, copied as they are
+PLATES = {'europe': ('gibs_europe.jpg', [-14, 34, 32, 62]), 'england': ('s2_england.jpg', [-2.0, 50.8, 2.0, 53.0]),
+          'herts': ('s2_herts.jpg', [-0.3, 51.65, 0.45, 52.1]), 'hadham': ('s2_hadham.jpg', [0.02, 51.83, 0.13, 51.895]),
+          'limerick': ('s2_limerick.jpg', [-9.3, 52.4, -8.1, 52.95])}
+for k, (src, box) in PLATES.items():
+    sz = resized(src, f'sat_{k}.jpg', 4096, 90); items[f'sat_{k}'] = dict(file=f'sat_{k}.jpg', size=sz, box=box)
+for t in ('wood_table_worn', 'velour_velvet', 'red_plaster_weathered', 'farm_soil'):
+    for m in ('diff', 'nor_gl', 'rough', 'disp'):
+        if os.path.exists(os.path.join(RAW, f'ph_{t}_{m}.jpg')): resized(f'ph_{t}_{m}.jpg', f'ph_{t}_{m}.jpg', 2048, 90)
+# country outlines (Natural Earth 1:50m, public domain): the countries with finds, and Italy
+gj = json.load(open(os.path.join(RAW, 'ne_countries.geojson')))
+WANT = ['United Kingdom', 'France', 'Belgium', 'Netherlands', 'Germany', 'Luxembourg', 'Switzerland', 'Austria', 'Hungary', 'Italy']
+out = {}
+for f in gj['features']:
+    n = f['properties']['NAME']
+    if n not in WANT: continue
+    g = f['geometry']; polys = g['coordinates'] if g['type'] == 'MultiPolygon' else [g['coordinates']]
+    rings = [[[round(x, 3), round(y, 3)] for x, y in poly[0]] for poly in polys if any(-14 < x < 32 and 34 < y < 62 for x, y in poly[0])]
+    out[n] = [r for r in rings if len(r) > 6]
+json.dump(out, open(os.path.join(TEX, 'countries.json'), 'w'))
+json.dump(items, open(os.path.join(TEX, 'items.json'), 'w'), indent=1)
+print('v2 assets:', len(out), 'countries,', ', '.join(k for k in items if k.startswith('sat_') or k in ('fresco', 'relief')))
+# the Tongeren photo: the white studio backdrop seen through its holes becomes transparent (bright, colourless,
+# connected areas inside the outline), so the object can stand on dark velvet
+p = os.path.join(TEX, 'dod_tongeren.png')
+if os.path.exists(p):
+    im = np.asarray(Image.open(p)).astype(np.float32) / 255
+    rgb, al = im[..., :3], im[..., 3]
+    bright = (rgb.min(2) > 0.95) & ((rgb.max(2) - rgb.min(2)) < 0.035) & (al > 0.5)
+    lab, n = ndi.label(bright); sizes = ndi.sum(bright, lab, range(1, n + 1))
+    HOLES = [(0.62, 0.46, 0.10), (0.23, 0.44, 0.14), (0.45, 0.80, 0.11), (0.72, 0.72, 0.07), (0.86, 0.42, 0.06)]   # hole centres (fractions, measured on the photo)
+    com = ndi.center_of_mass(bright, lab, range(1, n + 1)); Hh, Ww = al.shape
+    keep = [i + 1 for i, (s, (cy, cx)) in enumerate(zip(sizes, com)) if s > 400 and any((cx / Ww - u) ** 2 + (cy / Hh - v) ** 2 < r * r for u, v, r in HOLES)]
+    holes = np.isin(lab, keep)
+    holes = ndi.binary_dilation(holes, iterations=2)
+    al = np.where(holes, 0, al); al = ndi.gaussian_filter(al, 0.8)
+    out = np.dstack([rgb, al]); Image.fromarray((out * 255).astype(np.uint8)).save(os.path.join(TEX, 'dod_tongeren_holes.png'))
+    print('tongeren: holes cleared,', int(holes.sum()), 'px')
